@@ -20,4 +20,8 @@ void CountingSort(int a[], int n);
 void RadixSort(int a[], int n);
 void FlashSort(int a[], int n);
 
+// auxiliary functions
+void heapRebuild(int start, int arr[], int n);
+void merge(int arr[], int first, int mid, int last);
+
 #endif  // _SORT_H_

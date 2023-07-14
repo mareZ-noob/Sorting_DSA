@@ -16,8 +16,12 @@ long long MergeSortCounting(int a[], int first, int last);
 long long QuickSortCounting(int a[], int first, int last);
 
 // O(n)
-long long CountingSortCounting(int a[], int n);
+long long CountingSortCounting(int a[], int n, int u);
 long long RadixSortCounting(int a[], int n);
 long long FlashSortCounting(int a[], int n);
+
+// auxiliary functions
+void mergeCounting(int arr[], int first, int mid, int last, long long &cnt);
+void heapRebuildCounting(int start, int arr[], int n, long long &cnt);
 
 #endif  // _SORT_COUNTING_H_

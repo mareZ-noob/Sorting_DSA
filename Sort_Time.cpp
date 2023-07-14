@@ -16,7 +16,8 @@ double SelectionSortTime(int a[], int n){
     return double(stop - start) / CLOCKS_PER_SEC; 
 }
 
-void InsertionSort(int a[], int n) {
+double InsertionSortTime(int a[], int n) {
+    clock_t start = clock();
     for (int i = 1; i < n; ++i){
         int key = a[i];
         int j = i-1;
@@ -26,18 +27,24 @@ void InsertionSort(int a[], int n) {
         }
         a[j + 1] = key;
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC; 
 }
 
-void BubbleSort(int a[], int n) {
+double BubbleSortTime(int a[], int n) {
+    clock_t start = clock();
     for (int pass = 1; pass < n; ++pass){
         for (int j = 0; j < n - pass; ++j){
             if (a[j] > a[j + 1])
                 swap(a[j], a[j + 1]);
         }
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC; 
 }
 
-void ShakerSort(int a[], int n) {
+double ShakerSortTime(int a[], int n) {
+    clock_t start = clock();
     int left = 1, right = n-1, k = n-1;
     do {
         for (int j = right; j >= left; --j){
@@ -55,10 +62,13 @@ void ShakerSort(int a[], int n) {
         }
         right = k - 1;
     } while (left <= right);
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC; 
 }
 
 // O(nlogn)
-void ShellSort(int a[], int n) {
+double ShellSortTime(int a[], int n) {
+    clock_t start = clock();
     for (int gap = n/2; gap > 0; gap /= 2){
         for (int i = gap; i < n; i += 1){
             int temp = a[i];
@@ -69,6 +79,8 @@ void ShellSort(int a[], int n) {
             a[j] = temp;
         }
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC; 
 }
 
 void heapRebuild(int start, int arr[], int n) {
@@ -86,7 +98,8 @@ void heapRebuild(int start, int arr[], int n) {
     }
 }
 
-void HeapSort(int a[], int n) {
+double HeapSortTime(int a[], int n) {
+    clock_t start = clock();
     for (int index = (n - 1) / 2; index >= 0; index--)
         heapRebuild(index, a, n);
     swap(a[0], a[n - 1]);
@@ -96,6 +109,8 @@ void HeapSort(int a[], int n) {
         heapSize--;
         swap(a[0], a[heapSize]);
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
 
 void merge(int arr[], int first, int mid, int last) {
@@ -117,16 +132,20 @@ void merge(int arr[], int first, int mid, int last) {
         arr[index] = tempArr[index];
 }
 
-void MergeSort(int a[], int first, int last) {
+double MergeSortTime(int a[], int first, int last) {
+    clock_t start = clock();
     if (first < last) {
         int mid = (first + last) / 2;
         MergeSort(a, first, mid);
         MergeSort(a, mid + 1, last);
         merge(a, first, mid, last);
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
 
-void QuickSort(int a[], int first, int last) {
+double QuickSortTime(int a[], int first, int last) {
+    clock_t start = clock();
     int pivot = a[(first + last) / 2];
     int i = first, j = last;
     do {
@@ -139,10 +158,13 @@ void QuickSort(int a[], int first, int last) {
     } while (i <= j);
     if (first < j) QuickSort(a, first, j);
     if (i < last) QuickSort(a, i, last);
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
 
 // O(n)
-void CountingSort(int a[], int n, int u) { // u is the maximum value
+double CountingSortTime(int a[], int n, int u) { // u is the maximum value
+    clock_t start = clock();
     int *f = new int[u+1] {0};
     for (int i = 0; i < n; i++)
         f[a[i]] ++;
@@ -155,9 +177,15 @@ void CountingSort(int a[], int n, int u) { // u is the maximum value
     }
     for (int i = 0; i < n; i++)
         a[i] = b[i];
+
+    delete []b;
+    delete []f;
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
 
-void RadixSort(int a[], int n) {
+double RadixSortTime(int a[], int n) {
+    clock_t start = clock();
     int max_val = a[0];
     for (int i = 1; i < n; ++i)
         if (a[i] > max_val) max_val = a[i];
@@ -184,9 +212,12 @@ void RadixSort(int a[], int n) {
             for (int k = 0; k < tempCount[j]; ++k)
                 a[idx++] = tempArr[j][k];
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
 
-void FlashSort(int a[], int n) { //https://github.com/leduythuccs
+double FlashSortTime(int a[], int n) { //https://github.com/leduythuccs
+    clock_t start = clock();
     if (n <= 1) return;
     int m = n * 0.43;
     if (m <= 2) m = 2;
@@ -230,4 +261,6 @@ void FlashSort(int a[], int n) { //https://github.com/leduythuccs
                 a[j] = t;
             }
     }
+    clock_t stop = clock();
+    return double(stop - start) / CLOCKS_PER_SEC;
 }
