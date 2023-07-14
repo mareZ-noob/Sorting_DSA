@@ -16,11 +16,14 @@ void MergeSort(int a[], int first, int last);
 void QuickSort(int a[], int first, int last);
 
 // O(n)
-void CountingSort(int a[], int n);
+void CountingSort(int a[], int n, int u);
 void RadixSort(int a[], int n);
 void FlashSort(int a[], int n);
 
-// auxiliary functions
+// All
+void allSort(int a[], int n, int sortIndex);
+
+// Auxiliary functions
 void heapRebuild(int start, int arr[], int n);
 void merge(int arr[], int first, int mid, int last);
 

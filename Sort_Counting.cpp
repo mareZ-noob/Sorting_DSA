@@ -1,6 +1,4 @@
-#include "Sort_Couting.h"
-#define MAX_SIZE 1000
-int __L[300000];
+#include "Sort_Counting.h"
 
 // O(n*n)
 long long SelectionSortCounting(int a[], int n) {
@@ -118,7 +116,7 @@ long long HeapSortCounting(int a[], int n) {
 void mergeCounting(int arr[], int first, int mid, int last, long long &cnt) {
     int first1 = first, last1 = mid;
     int first2 = mid + 1, last2 = last;
-    int tempArr[MAX_SIZE];
+    int tempArr[INT_MAX];
     int index = first1;
     while ((first1 <= last1) && (first2 <= last2)) {
         if (++cnt && arr[first1] <= arr[first2])
@@ -212,49 +210,99 @@ long long RadixSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long FlashSortCounting(int a[], int n) {  // https://github.com/leduythuccs
+long long FlashSortCounting(int a[], int n) {
     long long cnt = 0;
-    if (n <= 1) return;
-    int m = n * 0.43;
-    if (m <= 2) m = 2;
-    // int m = n;
-    for (int i = 0; i < m; ++i) __L[i] = 0;
-    int Mx = a[0], Mn = a[0];
-    for (int i = 1; i < n; ++i) {
-        if (Mx < a[i]) Mx = a[i];
-        if (Mn > a[i]) Mn = a[i];
-    }
-    if (Mx == Mn) return;
-#define getK(x) 1ll * (m - 1) * (x - Mn) / (Mx - Mn)
-    for (int i = 0; i < n; ++i) ++__L[getK(a[i])];
-    for (int i = 1; i < m; ++i) __L[i] += __L[i - 1];
-    // step 2
-    int count = 0;
-    int i = 0;
-    while (count < n) {
-        int k = getK(a[i]);
-        while (i >= __L[k]) k = getK(a[++i]);
-        int z = a[i];
-        while (i != __L[k]) {
-            k = getK(z);
-            int y = a[__L[k] - 1];
-            a[--__L[k]] = z;
-            z = y;
-            ++count;
-        }
-    }
-    // step 3
-    for (int k = 1; k < m; ++k) {
-        for (int i = __L[k] - 2; i >= __L[k - 1]; --i)
-            if (a[i] > a[i + 1]) {
-                int t = a[i], j = i;
-                while (t > a[j + 1]) {
-                    a[j] = a[j + 1];
-                    ++j;
-                }
-                a[j] = t;
-            }
+
+    int minVal = a[0];
+    int maxIdx = 0;
+    int m = int(0.45 * n);
+    int *l = new int[m];
+    for (int i = 0; ++cnt && i < m; i++) {
+        l[i] = 0;
     }
 
+    for (int i = 1; ++cnt && i < n; i++) {
+        if (++cnt && a[i] < minVal) {
+            minVal = a[i];
+        }
+        if (++cnt && a[i] > a[maxIdx]) {
+            maxIdx = i;
+        }
+    }
+
+    if (++cnt && a[maxIdx] == minVal) {
+        return cnt;
+    }
+
+    double c1 = 1.00 * (m - 1) / (a[maxIdx] - minVal);
+
+    for (int i = 0; ++cnt && i < n; i++) {
+        int k = int(c1 * (a[i] - minVal));
+        ++l[k];
+    }
+
+    for (int i = 1; ++cnt && i < m; i++) {
+        l[i] += l[i - 1];
+    }
+
+    swap(a[maxIdx], a[0]);
+
+    int nmove = 0;
+    int j = 0;
+    int k = m - 1;
+    int t = 0;
+    int flash;
+
+    while (++cnt && nmove < n - 1) {
+        while (++cnt && j > l[k] - 1) {
+            j++;
+            k = int(c1 * (a[j] - minVal));
+        }
+
+        flash = a[j];
+
+        if (++cnt && k < 0) {
+            break;
+        }
+
+        while (++cnt && j != l[k]) {
+            k = int(c1 * (flash - minVal));
+            int hold = a[t = --l[k]];
+
+            a[t] = flash;
+            flash = hold;
+
+            ++nmove;
+        }
+    }
+    delete[] l;
+    cnt += InsertionSortCounting(a, n);
+
     return cnt;
+}
+
+long long allSortCounting(int a[], int n, int sortIndex) {
+    if (sortIndex == 0)
+        return SelectionSortCounting(a, n);
+    else if (sortIndex == 1)
+        return InsertionSortCounting(a, n);
+    else if (sortIndex == 2)
+        return BubbleSortCounting(a, n);
+    else if (sortIndex == 3)
+        return ShakerSortCounting(a, n);
+    else if (sortIndex == 4)
+        return ShellSortCounting(a, n);
+    else if (sortIndex == 5)
+        return HeapSortCounting(a, n);
+    else if (sortIndex == 6)
+        return MergeSortCounting(a, 0, n - 1);
+    else if (sortIndex == 7)
+        return QuickSortCounting(a, 0, n - 1);
+    else if (sortIndex == 8)
+        return CountingSortCounting(a, n, INT_MAX);
+    else if (sortIndex == 9)
+        return RadixSortCounting(a, n);
+    else if (sortIndex == 10)
+        return FlashSortCounting(a, n);
+    return 0;
 }

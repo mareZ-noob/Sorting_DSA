@@ -20,4 +20,7 @@ double CountingSortTime(int a[], int n, int u);
 double RadixSortTime(int a[], int n);
 double FlashSortTime(int a[], int n);
 
+// All
+double allSortTime(int a[], int n, int sortIndex);
+
 #endif  // _SORT_TIME_H_

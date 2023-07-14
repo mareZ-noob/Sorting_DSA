@@ -20,6 +20,9 @@ long long CountingSortCounting(int a[], int n, int u);
 long long RadixSortCounting(int a[], int n);
 long long FlashSortCounting(int a[], int n);
 
+// All
+long long allSortCounting(int a[], int n, int sortIndex);
+
 // auxiliary functions
 void mergeCounting(int arr[], int first, int mid, int last, long long &cnt);
 void heapRebuildCounting(int start, int arr[], int n, long long &cnt);

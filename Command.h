@@ -3,6 +3,11 @@
 
 #include "main.h"
 
+// Index
+int sortIndex(char *sortName);
+int orderIndex(char *inputOrder);
+
+// Command
 void Command1(char *sortName, char *inputFile, char *parameters);
 void Command2(char *sortName, char *sizeInput, char *inputOrder,
               char *parameters);
