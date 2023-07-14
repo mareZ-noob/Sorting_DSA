@@ -12,8 +12,8 @@ void ShakerSort(int a[], int n);
 // O(nlogn)
 void ShellSort(int a[], int n);
 void HeapSort(int a[], int n);
-void MergeSort(int a[], int n);
-void QuickSort(int a[], int n);
+void MergeSort(int a[], int first, int last);
+void QuickSort(int a[], int first, int last);
 
 // O(n)
 void CountingSort(int a[], int n);

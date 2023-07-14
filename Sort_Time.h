@@ -12,11 +12,11 @@ double ShakerSortTime(int a[], int n);
 // O(nlogn)
 double ShellSortTime(int a[], int n);
 double HeapSortTime(int a[], int n);
-double MergeSortTime(int a[], int n);
-double QuickSortTime(int a[], int n);
+double MergeSortTime(int a[], int first, int last);
+double QuickSortTime(int a[], int first, int last);
 
 // O(n)
-double CountingSortTime(int a[], int n);
+double CountingSortTime(int a[], int n, int u);
 double RadixSortTime(int a[], int n);
 double FlashSortTime(int a[], int n);
 

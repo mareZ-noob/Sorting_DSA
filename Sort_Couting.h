@@ -12,8 +12,8 @@ long long ShakerSortCounting(int a[], int n);
 // O(nlogn)
 long long ShellSortCounting(int a[], int n);
 long long HeapSortCounting(int a[], int n);
-long long MergeSortCounting(int a[], int n);
-long long QuickSortCounting(int a[], int n);
+long long MergeSortCounting(int a[], int first, int last);
+long long QuickSortCounting(int a[], int first, int last);
 
 // O(n)
 long long CountingSortCounting(int a[], int n);
