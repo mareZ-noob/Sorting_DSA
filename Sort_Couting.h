@@ -4,20 +4,20 @@
 #include "main.h"
 
 // O(n^2)
-int SelectionSortCounting(int a[], int n);
-int InsertionSortCounting(int a[], int n);
-int BubbleSortCounting(int a[], int n);
-int ShakerSortCounting(int a[], int n);
+long long SelectionSortCounting(int a[], int n);
+long long InsertionSortCounting(int a[], int n);
+long long BubbleSortCounting(int a[], int n);
+long long ShakerSortCounting(int a[], int n);
 
 // O(nlogn)
-int ShellSortCounting(int a[], int n);
-int HeapSortCounting(int a[], int n);
-int MergeSortCounting(int a[], int n);
-int QuickSortCounting(int a[], int n);
+long long ShellSortCounting(int a[], int n);
+long long HeapSortCounting(int a[], int n);
+long long MergeSortCounting(int a[], int n);
+long long QuickSortCounting(int a[], int n);
 
 // O(n)
-int CountingSortCounting(int a[], int n);
-int RadixSortCounting(int a[], int n);
-int FlashSortCounting(int a[], int n);
+long long CountingSortCounting(int a[], int n);
+long long RadixSortCounting(int a[], int n);
+long long FlashSortCounting(int a[], int n);
 
 #endif  // _SORT_COUNTING_H_

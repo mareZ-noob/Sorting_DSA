@@ -1,8 +1,8 @@
 #include "Sort_Couting.h"
 
 // O(n*n)
-int SelectionSortCounting(int a[], int n) {
-    int cnt = 0;
+long long SelectionSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -11,8 +11,8 @@ int SelectionSortCounting(int a[], int n) {
     return cnt;
 }
 
-int InsertionSortCounting(int a[], int n) {
-    int cnt = 0;
+long long InsertionSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -21,8 +21,8 @@ int InsertionSortCounting(int a[], int n) {
     return cnt;
 }
 
-int BubbleSortCounting(int a[], int n) {
-    int cnt = 0;
+long long BubbleSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -31,8 +31,8 @@ int BubbleSortCounting(int a[], int n) {
     return cnt;
 }
 
-int ShakerSortCounting(int a[], int n) {
-    int cnt = 0;
+long long ShakerSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -42,8 +42,8 @@ int ShakerSortCounting(int a[], int n) {
 }
 
 // O(n*logn)
-int ShellSortCounting(int a[], int n) {
-    int cnt = 0;
+long long ShellSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -52,8 +52,8 @@ int ShellSortCounting(int a[], int n) {
     return cnt;
 }
 
-int HeapSortCounting(int a[], int n) {
-    int cnt = 0;
+long long HeapSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -62,8 +62,8 @@ int HeapSortCounting(int a[], int n) {
     return cnt;
 }
 
-int MergeSortCounting(int a[], int n) {
-    int cnt = 0;
+long long MergeSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -72,8 +72,8 @@ int MergeSortCounting(int a[], int n) {
     return cnt;
 }
 
-int QuickSortCounting(int a[], int n) {
-    int cnt = 0;
+long long QuickSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -83,8 +83,8 @@ int QuickSortCounting(int a[], int n) {
 }
 
 // O(n)
-int CountingSortCounting(int a[], int n) {
-    int cnt = 0;
+long long CountingSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -93,8 +93,8 @@ int CountingSortCounting(int a[], int n) {
     return cnt;
 }
 
-int RadixSortCounting(int a[], int n) {
-    int cnt = 0;
+long long RadixSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
@@ -103,8 +103,8 @@ int RadixSortCounting(int a[], int n) {
     return cnt;
 }
 
-int FlashSortCounting(int a[], int n) {
-    int cnt = 0;
+long long FlashSortCounting(int a[], int n) {
+    long long cnt = 0;
 
     /*
         TODO
