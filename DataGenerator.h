@@ -3,6 +3,12 @@
 
 #include "main.h"
 
+template <class T>
+void HoanVi(T &a, T &b) {
+    T x = a;
+    a = b;
+    b = x;
+}
 void GenerateRandomData(int a[], int n);
 void GenerateSortedData(int a[], int n);
 void GenerateReverseData(int a[], int n);
