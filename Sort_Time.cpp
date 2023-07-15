@@ -60,7 +60,7 @@ double QuickSortTime(int a[], int first, int last) {
 // O(n)
 double CountingSortTime(int a[], int n, int u) {  // u is the maximum value
     clock_t start = clock();
-    CountingSort(a, n, INT_MAX);
+    CountingSort(a, n, 1000001);
     clock_t stop = clock();
     return double(stop - start) / CLOCKS_PER_SEC;
 }
@@ -97,7 +97,7 @@ double allSortTime(int a[], int n, int sortIndex) {
     else if (sortIndex == 7)
         return QuickSortTime(a, 0, n - 1);
     else if (sortIndex == 8)
-        return CountingSortTime(a, n, INT_MAX);
+        return CountingSortTime(a, n, 1000001);
     else if (sortIndex == 9)
         return RadixSortTime(a, n);
     else if (sortIndex == 10)

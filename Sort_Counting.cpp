@@ -116,7 +116,7 @@ unsigned long long int HeapSortCounting(int a[], int n) {
 void mergeCounting(int arr[], int first, int mid, int last, unsigned long long int &cnt) {
     int first1 = first, last1 = mid;
     int first2 = mid + 1, last2 = last;
-    int tempArr[INT_MAX];
+    int tempArr[500001];
     int index = first1;
     while ((first1 <= last1) && (first2 <= last2)) {
         if (++cnt && arr[first1] <= arr[first2])
@@ -299,7 +299,7 @@ unsigned long long int allSortCounting(int a[], int n, int sortIndex) {
     else if (sortIndex == 7)
         return QuickSortCounting(a, 0, n - 1);
     else if (sortIndex == 8)
-        return CountingSortCounting(a, n, INT_MAX);
+        return CountingSortCounting(a, n, 1000001);
     else if (sortIndex == 9)
         return RadixSortCounting(a, n);
     else if (sortIndex == 10)
