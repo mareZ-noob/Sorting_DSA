@@ -1,8 +1,8 @@
 #include "Sort_Counting.h"
 
 // O(n*n)
-long long SelectionSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int SelectionSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
 
     for (int i = 0; i < n - 1; i++) {
         int minId = i;
@@ -15,8 +15,8 @@ long long SelectionSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long InsertionSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int InsertionSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
 
     for (int i = 1; i < n; ++i) {
         int key = a[i];
@@ -31,8 +31,8 @@ long long InsertionSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long BubbleSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int BubbleSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
 
     for (int pass = 1; pass < n; ++pass) {
         for (int j = 0; j < n - pass; ++j) {
@@ -43,8 +43,8 @@ long long BubbleSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long ShakerSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int ShakerSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
     int left = 1, right = n - 1, k = n - 1;
     do {
         for (int j = right; j >= left; --j) {
@@ -67,8 +67,8 @@ long long ShakerSortCounting(int a[], int n) {
 }
 
 // O(n*logn)
-long long ShellSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int ShellSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
     for (int gap = n / 2; gap > 0; gap /= 2) {
         for (int i = gap; i < n; i += 1) {
             int temp = a[i];
@@ -83,7 +83,7 @@ long long ShellSortCounting(int a[], int n) {
     return cnt;
 }
 
-void heapRebuildCounting(int start, int arr[], int n, long long &cnt) {
+void heapRebuildCounting(int start, int arr[], int n, unsigned long long int &cnt) {
     int leftChild = 2 * start + 1;
     if (leftChild >= n) return;
     int largerChild = leftChild;
@@ -98,8 +98,8 @@ void heapRebuildCounting(int start, int arr[], int n, long long &cnt) {
     }
 }
 
-long long HeapSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int HeapSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
     for (int index = (n - 1) / 2; index >= 0; index--)
         heapRebuildCounting(index, a, n, cnt);
     swap(a[0], a[n - 1]);
@@ -113,7 +113,7 @@ long long HeapSortCounting(int a[], int n) {
     return cnt;
 }
 
-void mergeCounting(int arr[], int first, int mid, int last, long long &cnt) {
+void mergeCounting(int arr[], int first, int mid, int last, unsigned long long int &cnt) {
     int first1 = first, last1 = mid;
     int first2 = mid + 1, last2 = last;
     int tempArr[INT_MAX];
@@ -129,8 +129,8 @@ void mergeCounting(int arr[], int first, int mid, int last, long long &cnt) {
     for (index = first; index <= last; ++index) arr[index] = tempArr[index];
 }
 
-long long MergeSortCounting(int a[], int first, int last) {
-    long long cnt = 0;
+unsigned long long int MergeSortCounting(int a[], int first, int last) {
+    unsigned long long int cnt = 0;
 
     if (first < last) {
         int mid = (first + last) / 2;
@@ -142,8 +142,8 @@ long long MergeSortCounting(int a[], int first, int last) {
     return cnt;
 }
 
-long long QuickSortCounting(int a[], int first, int last) {
-    long long cnt = 0;
+unsigned long long int QuickSortCounting(int a[], int first, int last) {
+    unsigned long long int cnt = 0;
     int pivot = a[(first + last) / 2];
     int i = first, j = last;
     do {
@@ -162,8 +162,8 @@ long long QuickSortCounting(int a[], int first, int last) {
 }
 
 // O(n)
-long long CountingSortCounting(int a[], int n, int u) {
-    long long cnt = 0;
+unsigned long long int CountingSortCounting(int a[], int n, int u) {
+    unsigned long long int cnt = 0;
 
     int *f = new int[u + 1]{0};
     for (int i = 0; i < n; i++) f[a[i]]++;
@@ -180,8 +180,8 @@ long long CountingSortCounting(int a[], int n, int u) {
     return cnt;
 }
 
-long long RadixSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int RadixSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
 
     int max_val = a[0];
     for (int i = 1; i < n; ++i)
@@ -210,8 +210,8 @@ long long RadixSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long FlashSortCounting(int a[], int n) {
-    long long cnt = 0;
+unsigned long long int FlashSortCounting(int a[], int n) {
+    unsigned long long int cnt = 0;
 
     int minVal = a[0];
     int maxIdx = 0;
@@ -281,7 +281,7 @@ long long FlashSortCounting(int a[], int n) {
     return cnt;
 }
 
-long long allSortCounting(int a[], int n, int sortIndex) {
+unsigned long long int allSortCounting(int a[], int n, int sortIndex) {
     if (sortIndex == 0)
         return SelectionSortCounting(a, n);
     else if (sortIndex == 1)

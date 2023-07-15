@@ -27,15 +27,16 @@ int sortIndex(char *sortName) {
 }
 
 int orderIndex(char *inputOrder) {
+    int order;
     if (strcmp(inputOrder, "-rand") == 0)
-        return 0;
+        order = 0;
     else if (strcmp(inputOrder, "-nsorted") == 0)
-        return 1;
-    else if (strcmp(inputOrder, "sorted") == 0)
-        return 2;
-    else if (strcmp(inputOrder, "rev") == 0)
-        return 3;
-    return 0;
+        order = 1;
+    else if (strcmp(inputOrder, "-sorted") == 0)
+        order = 2;
+    else if (strcmp(inputOrder, "-rev") == 0)
+        order = 3;
+    return order;
 }
 
 void Command1(char *sortName, char *inputFile, char *parameters) {
@@ -95,10 +96,6 @@ void Command2(char *sortName, char *sizeInput, char *inputOrder,
     for (int i = 0; i < n; i++) ofs << a[i] << " ";
     ofs.close();
 
-    ifstream ifs;
-    ifs.open("input.txt");
-    // for (int i = 0; i < n; i++) ifs >> a[i];
-
     cout << "Running time (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-time") == 0)
         cout << allSortTime(a, n, sortIndex(sortName));
@@ -108,8 +105,6 @@ void Command2(char *sortName, char *sizeInput, char *inputOrder,
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-comp") == 0)
         cout << allSortCounting(a, n, sortIndex(sortName));
     cout << endl << endl;
-
-    ifs.close();
 }
 
 void Command3(char *sortName, char *inputSize, char *parameters) {
@@ -173,23 +168,25 @@ void Command3(char *sortName, char *inputSize, char *parameters) {
 }
 
 void Command4(char *sortName1, char *sortName2, char *inputFile) {
-    cout << "COMPARISON MODE" << endl;
-    cout << "Algorithm: " << sortName1 << " | " << sortName2 << endl;
-    cout << "Input file: " << inputFile << endl;
-
     ifstream ifs;
     ifs.open(inputFile);
     int n;
     ifs >> n;
     int a[n];
+    cout << "COMPARISON MODE" << endl;
+    cout << "Algorithm: " << sortName1 << " | " << sortName2 << endl;
+    cout << "Input file: " << inputFile << endl;
+    cout << "Input size: " << n << endl;
+    cout << "-------------------------" << endl;
+
     for (int i = 0; i < n; i++) ifs >> a[i];
     cout << "Running time: " << allSortTime(a, n, sortIndex(sortName1))
          << " seconds | ";
     cout << allSortTime(a, n, sortIndex(sortName2)) << " seconds" << endl;
-    cout << endl;
     cout << "Comparisons: " << allSortCounting(a, n, sortIndex(sortName1))
          << " | ";
     cout << allSortCounting(a, n, sortIndex(sortName2)) << endl;
+    ifs.close();
 
     allSort(a, n, sortIndex(sortName1));
     ofstream ofs;
@@ -198,7 +195,6 @@ void Command4(char *sortName1, char *sortName2, char *inputFile) {
     for (int i = 0; i < n; i++) ofs << a[i];
 
     ofs.close();
-    ifs.close();
 }
 
 void Command5(char *sortName1, char *sortName2, char *inputSize,
