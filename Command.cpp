@@ -59,7 +59,7 @@ void Command1(char *sortName, char *inputFile, char *parameters) {
 
     cout << "Running time (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-time") == 0)
-        cout << allSortTime(a, n, sortIndex(sortName));
+        cout << allSortTime(a, n, sortIndex(sortName)) << " seconds";
     cout << endl;
 
     cout << "Comparisions (if required): ";
@@ -98,7 +98,7 @@ void Command2(char *sortName, char *sizeInput, char *inputOrder,
 
     cout << "Running time (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-time") == 0)
-        cout << allSortTime(a, n, sortIndex(sortName));
+        cout << allSortTime(a, n, sortIndex(sortName)) << " seconds";
     cout << endl;
 
     cout << "Comparisions (if required): ";
@@ -152,7 +152,7 @@ void Command3(char *sortName, char *inputSize, char *parameters) {
         cout << "Running time (if required): ";
         if (strcmp(parameters, "-both") == 0 ||
             strcmp(parameters, "-time") == 0)
-            cout << allSortTime(b, temp, sortIndex(sortName));
+            cout << allSortTime(b, temp, sortIndex(sortName)) << " seconds";
         cout << endl;
 
         cout << "Comparisions (if required): ";
@@ -192,7 +192,7 @@ void Command4(char *sortName1, char *sortName2, char *inputFile) {
     ofstream ofs;
     ofs.open("output.txt");
     ofs << n << endl;
-    for (int i = 0; i < n; i++) ofs << a[i];
+    for (int i = 0; i < n; i++) ofs << a[i] << " ";
 
     ofs.close();
 }
