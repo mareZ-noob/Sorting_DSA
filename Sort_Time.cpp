@@ -60,7 +60,7 @@ double QuickSortTime(int a[], int first, int last) {
 // O(n)
 double CountingSortTime(int a[], int n, int u) {  // u is the maximum value
     clock_t start = clock();
-    CountingSort(a, n, 1000001);
+    CountingSort(a, n, u);
     clock_t stop = clock();
     return double(stop - start) / CLOCKS_PER_SEC;
 }
