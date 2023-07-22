@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <limits.h>
 #include <string.h>
 #include <time.h>
 
@@ -10,7 +9,6 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 
 #include "Command.h"

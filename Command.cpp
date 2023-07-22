@@ -28,7 +28,7 @@ string displayName(char *sortName) {
 
 string displayOrder(char *inputOrder) {
     if (strcmp(inputOrder, "-rand") == 0)
-        return "Randomize";
+        return "Randomized";
     else if (strcmp(inputOrder, "-nsorted") == 0)
         return "Nearly Sorted";
     else if (strcmp(inputOrder, "-sorted") == 0)
@@ -87,24 +87,25 @@ void Command1(char *sortName, char *inputFile, char *parameters) {
     int a[n];
     for (int i = 0; i < n; i++) ifs >> a[i];
 
-    cout << "ALGORITHM MODE\n";
-    cout << "Algorithm: " << displayName(sortName) << "\n";
-    cout << "Input file: " << inputFile << "\n";
-    cout << "Input size: " << n << "\n";
-    cout << "-------------------------" << "\n";
+    std::cout << "ALGORITHM MODE\n";
+    std::cout << "Algorithm: " << displayName(sortName) << "\n";
+    std::cout << "Input file: " << inputFile << "\n";
+    std::cout << "Input size: " << n << "\n";
+    std::cout << "-------------------------"
+              << "\n";
 
     int b[n];
     for (int i = 0; i < n; i++) b[i] = a[i];
 
-    cout << "Running time (if required): ";
+    std::cout << "Running time (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-time") == 0)
-        cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
-    cout << "\n";
+        std::cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
+    std::cout << "\n";
 
-    cout << "Comparisions (if required): ";
+    std::cout << "Comparisions (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-comp") == 0)
-        cout << allSortCounting(b, n, sortIndex(sortName));
-    cout << "\n\n\n";
+        std::cout << allSortCounting(b, n, sortIndex(sortName));
+    std::cout << "\n\n\n";
     ifs.close();
 
     allSort(a, n, sortIndex(sortName));
@@ -121,11 +122,12 @@ void Command2(char *sortName, char *sizeInput, char *inputOrder,
     int n = atoi(sizeInput);
     int a[n];
 
-    cout << "ALGORITHM MODE\n";
-    cout << "Algorithm: " << displayName(sortName) << "\n";
-    cout << "Input size: " << n << "\n";
-    cout << "Input order: " << displayOrder(inputOrder) << "\n";
-    cout << "-------------------------" << "\n";
+    std::cout << "ALGORITHM MODE\n";
+    std::cout << "Algorithm: " << displayName(sortName) << "\n";
+    std::cout << "Input size: " << n << "\n";
+    std::cout << "Input order: " << displayOrder(inputOrder) << "\n";
+    std::cout << "-------------------------"
+              << "\n";
 
     GenerateData(a, n, orderIndex(inputOrder));
 
@@ -138,24 +140,25 @@ void Command2(char *sortName, char *sizeInput, char *inputOrder,
     int b[n];
     for (int i = 0; i < n; i++) b[i] = a[i];
 
-    cout << "Running time (if required): ";
+    std::cout << "Running time (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-time") == 0)
-        cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
-    cout << "\n";
+        std::cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
+    std::cout << "\n";
 
-    cout << "Comparisions (if required): ";
+    std::cout << "Comparisions (if required): ";
     if (strcmp(parameters, "-both") == 0 || strcmp(parameters, "-comp") == 0)
-        cout << allSortCounting(b, n, sortIndex(sortName));
-    cout << "\n\n\n";
+        std::cout << allSortCounting(b, n, sortIndex(sortName));
+    std::cout << "\n\n\n";
 }
 
 void Command3(char *sortName, char *inputSize, char *parameters) {
     int n = atoi(inputSize);
 
-    cout << "ALGORITHM MODE" << "\n";
-    cout << "Algorithm: " << displayName(sortName) << "\n";
-    cout << "Input size: " << n << "\n";
-    cout << "\n";
+    std::cout << "ALGORITHM MODE"
+              << "\n";
+    std::cout << "Algorithm: " << displayName(sortName) << "\n";
+    std::cout << "Input size: " << n << "\n";
+    std::cout << "\n";
 
     ofstream ofs[4];
 
@@ -168,17 +171,22 @@ void Command3(char *sortName, char *inputSize, char *parameters) {
 
     for (int i = 0; i < 4; i++) {
         ofs[i].open(file[i]);
-        cout << "Input order: ";
+        std::cout << "Input order: ";
 
         if (i == 0)
-            cout << "Randomize" << "\n";
+            std::cout << "Randomized"
+                      << "\n";
         else if (i == 1)
-            cout << "Nearly Sorted" << "\n";
+            std::cout << "Nearly Sorted"
+                      << "\n";
         else if (i == 2)
-            cout << "Sorted" << "\n";
+            std::cout << "Sorted"
+                      << "\n";
         else if (i == 3)
-            cout << "Reversed" << "\n";
-        cout << "-------------------------" << "\n";
+            std::cout << "Reversed"
+                      << "\n";
+        std::cout << "-------------------------"
+                  << "\n";
 
         int a[n];
         GenerateData(a, n, i);
@@ -188,21 +196,24 @@ void Command3(char *sortName, char *inputSize, char *parameters) {
         int b[n];
         for (int j = 0; j < n; j++) b[j] = a[j];
 
-        cout << "Running time (if required): ";
+        std::cout << "Running time (if required): ";
         if (strcmp(parameters, "-both") == 0 ||
             strcmp(parameters, "-time") == 0)
-            cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
-        cout << "\n";
+            std::cout << allSortTime(a, n, sortIndex(sortName)) << " second(s)";
+        std::cout << "\n";
 
-        cout << "Comparisions (if required): ";
+        std::cout << "Comparisions (if required): ";
         if (strcmp(parameters, "-both") == 0 ||
             strcmp(parameters, "-comp") == 0)
-            cout << allSortCounting(b, n, sortIndex(sortName));
-        cout << "\n\n";
+            std::cout << allSortCounting(b, n, sortIndex(sortName));
+        std::cout << "\n\n";
 
         ofs[i].close();
     }
-    cout << "\n";
+    for (int i = 0; i < 4; i++) delete[] file[i];
+    delete[] file;
+
+    std::cout << "\n";
 }
 
 void Command4(char *sortName1, char *sortName2, char *inputFile) {
@@ -210,11 +221,14 @@ void Command4(char *sortName1, char *sortName2, char *inputFile) {
     ifs.open(inputFile);
     int n;
     ifs >> n;
-    cout << "COMPARE MODE" << "\n";
-    cout << "Algorithm: " << displayName(sortName1) << " | " << displayName(sortName2) << "\n";
-    cout << "Input file: " << inputFile << "\n";
-    cout << "Input size: " << n << "\n";
-    cout << "-------------------------" << "\n";
+    std::cout << "COMPARE MODE"
+              << "\n";
+    std::cout << "Algorithm: " << displayName(sortName1) << " | "
+              << displayName(sortName2) << "\n";
+    std::cout << "Input file: " << inputFile << "\n";
+    std::cout << "Input size: " << n << "\n";
+    std::cout << "-------------------------"
+              << "\n";
 
     int a[n];
     for (int i = 0; i < n; i++) ifs >> a[i];
@@ -226,12 +240,14 @@ void Command4(char *sortName1, char *sortName2, char *inputFile) {
         d[i] = a[i];
     }
 
-    cout << "Running time: " << allSortTime(a, n, sortIndex(sortName1))
-         << " second(s) | ";
-    cout << allSortTime(b, n, sortIndex(sortName2)) << " second(s)" << "\n";
-    cout << "Comparisions: " << allSortCounting(c, n, sortIndex(sortName1))
-         << " | ";
-    cout << allSortCounting(d, n, sortIndex(sortName2)) << "\n" << "\n";
+    std::cout << "Running time: " << allSortTime(a, n, sortIndex(sortName1))
+              << " second(s) | ";
+    std::cout << allSortTime(b, n, sortIndex(sortName2)) << " second(s)"
+              << "\n";
+    std::cout << "Comparisions: " << allSortCounting(c, n, sortIndex(sortName1))
+              << " | ";
+    std::cout << allSortCounting(d, n, sortIndex(sortName2)) << "\n"
+              << "\n";
     ifs.close();
 
     allSort(a, n, sortIndex(sortName1));
@@ -247,12 +263,13 @@ void Command5(char *sortName1, char *sortName2, char *inputSize,
               char *inputOrder) {
     int n = atoi(inputSize);
     int a[n];
-    cout << "COMPARE MODE\n";
-    cout << "Algorithm: " << displayName(sortName1) << " | " << displayName(sortName2)
-         << "\n";
-    cout << "Input size: " << inputSize << "\n";
-    cout << "Input order: " << displayOrder(inputOrder) << "\n";
-    cout << "-------------------------" << "\n";
+    std::cout << "COMPARE MODE\n";
+    std::cout << "Algorithm: " << displayName(sortName1) << " | "
+              << displayName(sortName2) << "\n";
+    std::cout << "Input size: " << inputSize << "\n";
+    std::cout << "Input order: " << displayOrder(inputOrder) << "\n";
+    std::cout << "-------------------------"
+              << "\n";
     GenerateData(a, n, orderIndex(inputOrder));
 
     ofstream ofs;
@@ -268,10 +285,11 @@ void Command5(char *sortName1, char *sortName2, char *inputSize,
         d[i] = a[i];
     }
 
-    cout << "Running time: " << allSortTime(a, n, sortIndex(sortName1))
-         << " second(s) | ";
-    cout << allSortTime(b, n, sortIndex(sortName2)) << " second(s)" << "\n";
-    cout << "Comparisions: " << allSortCounting(c, n, sortIndex(sortName1))
-         << " | ";
-    cout << allSortCounting(d, n, sortIndex(sortName2)) << "\n\n";
+    std::cout << "Running time: " << allSortTime(a, n, sortIndex(sortName1))
+              << " second(s) | ";
+    std::cout << allSortTime(b, n, sortIndex(sortName2)) << " second(s)"
+              << "\n";
+    std::cout << "Comparisions: " << allSortCounting(c, n, sortIndex(sortName1))
+              << " | ";
+    std::cout << allSortCounting(d, n, sortIndex(sortName2)) << "\n\n";
 }

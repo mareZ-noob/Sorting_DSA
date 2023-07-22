@@ -10,13 +10,22 @@ int main(int argc, char** argv) {
             }
         } else if (strcmp(argv[1], "-c") == 0) {
             Command4(argv[2], argv[3], argv[4]);
+        } else {
+            std::cerr << "Invalid arguments !"
+                      << "\n";
         }
     } else if (argc == 6) {
         if (strcmp(argv[1], "-a") == 0) {
             Command2(argv[2], argv[3], argv[4], argv[5]);
         } else if (strcmp(argv[1], "-c") == 0) {
             Command5(argv[2], argv[3], argv[4], argv[5]);
+        } else {
+            std::cerr << "Invalid arguments !"
+                      << "\n";
         }
+    } else {
+        std::cerr << "Invalid arguments !"
+                  << "\n";
     }
 
     return 0;
